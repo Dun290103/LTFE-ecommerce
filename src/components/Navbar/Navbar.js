@@ -48,19 +48,19 @@ const Navbar = () => {
           <div className="buttons text-center">
             <NavLink to="/login" className="btn btn-outline-dark m-2">
               <div style={{ display: "flex", alignItems: "center" }}>
-                <FaSignInAlt style={{ marginRight: "8px" }} />
+                <FaSignInAlt style={{ marginRight: "5px" }} />
                 Login
               </div>
             </NavLink>
             <NavLink to="/register" className="btn btn-outline-dark m-2">
               <div style={{ display: "flex", alignItems: "center" }}>
-                <FaUserPlus style={{ marginRight: "8px" }} />
+                <FaUserPlus style={{ marginRight: "5px" }} />
                 Register
               </div>
             </NavLink>
             <NavLink to="/cart" className="btn btn-outline-dark m-2">
               <div style={{ display: "flex", alignItems: "center" }}>
-                <FaShoppingCart style={{ marginRight: "8px" }} />
+                <FaShoppingCart style={{ marginRight: "5px" }} />
                 Cart (0)
               </div>
             </NavLink>
