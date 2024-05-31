@@ -1,71 +1,85 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
+import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className="container">
         <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/">
           React Ecommerce
         </NavLink>
-        <button
+        <Button
+          variant="light"
+          onClick={() => setOpen(!open)}
+          aria-controls="navbarSupportedContent"
+          aria-expanded={open}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </Button>
+        {/* <button
           className="navbar-toggler mx-2"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav m-auto my-2 text-center">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/">
-                Home
+        </button> */}
+        <Collapse in={open}>
+          <div id="navbarSupportedContent">
+            <ul className="navbar-nav m-auto my-2 text-center">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/product">
+                  Products
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/about">
+                  About
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/contact">
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+            <div className="buttons text-center">
+              <NavLink to="/login" className="btn btn-outline-dark m-2">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <FaSignInAlt style={{ marginRight: "5px" }} />
+                  Login
+                </div>
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/product">
-                Products
+              <NavLink to="/register" className="btn btn-outline-dark m-2">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <FaUserPlus style={{ marginRight: "5px" }} />
+                  Register
+                </div>
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/about">
-                About
+              <NavLink to="/cart" className="btn btn-outline-dark m-2">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <FaShoppingCart style={{ marginRight: "5px" }} />
+                  Cart (0)
+                </div>
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/contact">
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-          <div className="buttons text-center">
-            <NavLink to="/login" className="btn btn-outline-dark m-2">
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <FaSignInAlt style={{ marginRight: "5px" }} />
-                Login
-              </div>
-            </NavLink>
-            <NavLink to="/register" className="btn btn-outline-dark m-2">
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <FaUserPlus style={{ marginRight: "5px" }} />
-                Register
-              </div>
-            </NavLink>
-            <NavLink to="/cart" className="btn btn-outline-dark m-2">
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <FaShoppingCart style={{ marginRight: "5px" }} />
-                Cart (0)
-              </div>
-            </NavLink>
+            </div>
           </div>
-        </div>
+        </Collapse>
       </div>
     </nav>
   );

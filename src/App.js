@@ -5,9 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
     <div className="app-container">
-      <div className="navbar-container">
-        <Navbar />
-      </div>
+      <Navbar />
       <div className="main-container">
         <div className="app-content">
           <Outlet />
