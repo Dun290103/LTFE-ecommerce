@@ -20,22 +20,13 @@ const Navbar = () => {
           onClick={() => setOpen(!open)}
           aria-controls="navbarSupportedContent"
           aria-expanded={open}
+          className="navbar-toggler"
         >
           <span className="navbar-toggler-icon"></span>
         </Button>
-        {/* <button
-          className="navbar-toggler mx-2"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
+
         <Collapse in={open}>
-          <div id="navbarSupportedContent">
+          <div className="navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav m-auto my-2 text-center">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/">

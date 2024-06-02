@@ -5,7 +5,6 @@ import ContactPage from "./components/ContactPage/ContactPage";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import AboutPage from "./components/AboutPage/AboutPage";
-import Checkout from "./components/Cart/Cart";
 import Cart from "./components/Cart/Cart";
 
 const Layout = () => {
