@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className="container">
         <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/">
-          React Ecommerce
+          Gullveig
         </NavLink>
         <Button
           variant="light"
