@@ -1,0 +1,31 @@
+@use "sass:map";
+@import "styles/page/all";
+
+.container_categories_slider{
+    max-width: 1200px;
+    margin-top: 40px;
+    .categories_slider{
+        .categories_slider_item{
+            height: 300px;
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top center;
+            border-radius: 5px ;
+            p{
+                position: absolute;
+                left:5%;
+                bottom: 20px;
+                text-align: center;
+                font-size: 18px;
+                color: map.map-get($theme-color, "normal-text");
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                padding: 12px 0 10px;
+                width: 270px;
+             
+            }
+        }
+    }
+}
