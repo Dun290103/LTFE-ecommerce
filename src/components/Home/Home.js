@@ -1,13 +1,19 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
-import 'react-multi-carousel/lib/styles.css';
-
+import { Carousel } from 'react-bootstrap';
+import { useState } from 'react';
 
 const Home = () => {
 
+    const [index, setIndex] = useState(0);
+  
+    const handleSelect = (selectedIndex) => {
+      setIndex(selectedIndex);
+    };
+
   return (
-    <>
+    <div>
       <div className="hero border-1 pb-3">
         <div className="card bg-dark text-white border-0 mx-3">
           <img
@@ -34,10 +40,55 @@ const Home = () => {
         </div>
       </div>
 
-  
-  
-    </>
+      <Carousel activeIndex={index} onSelect={handleSelect} fade data-bs-theme="dark" slide>
+        <Carousel.Item>
+          <img
+            className="d-flex mx-auto carousel-image w-2 h-2"
+            src="./assets/vongtay.webp"
+            alt="Bracelet"
+          />
+          <Carousel.Caption>
+            <h3>Bracelet</h3>
+            <p>Discover our unique bracelets.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-flex mx-auto carousel-image   w-2 h-2"
+            src="./assets/ring.png"
+            alt="Ring"
+          />
+          <Carousel.Caption>
+            <h3>Ring</h3>
+            <p>Elegant and timeless rings.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-flex mx-auto carousel-image w-2 h-2"
+            src="./assets/neckles1.png"
+            alt="Necklace"
+          />
+          <Carousel.Caption>
+            <h3>Necklace</h3>
+            <p>Stunning necklaces for every occasion.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-flex mx-auto carousel-image  w-2 h-2"
+            src="./assets/earing2.png"
+            alt="Earrings"
+          />
+          <Carousel.Caption>
+            <h3>Earrings</h3>
+            <p>Beautiful earrings to complement your look.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+  </div>
   );
-};
+}
+
 
 export default Home;
