@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import ProductItems from "./ProductItems";
 import React from "react";
 
+
 function Product() {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(2);
-    const productsPerPage = 3;
+    const productsPerPage = 12;
 
     useEffect(() => {
         fetch("http://localhost:3080/api/products")
@@ -30,17 +31,19 @@ function Product() {
     return (
         <div className="App">
             <h1 className="thisIsHOne">Product</h1>
-            <ul>
+            <div className="product-grid">
                 {
                     currentProducts.map(product => (
-                        <li key={product.id} className="product-item">
-                            <h2>{product.name}</h2>
-                            <p>{product.description}</p>
-                            <p>{product.price}</p>
+                        <li key={product.id} className="product-item" href="!=">
+                            <img src={product.image} alt={product.name} />
+                            <h2 className="fw-lighter fs-7">{product.name}</h2>
+                            <p className="fw-bold fs-8">${product.price}</p>
+                           
                         </li>
+        
                     ))
                 }
-            </ul>
+            </div>
             <ProductItems
                 productsPerPage={productsPerPage}
                 totalProducts={products.length}
