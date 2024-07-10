@@ -45,6 +45,7 @@ function Product() {
                 productsPerPage={productsPerPage}
                 totalProducts={products.length}
                 paginate={paginate}
+                currentPage={currentPage}
                 num={pageNumb}
             />
         </div>
