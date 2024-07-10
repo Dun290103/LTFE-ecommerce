@@ -35,7 +35,7 @@ function Product() {
                 {
                     currentProducts.map(product => (
                         <li key={product.id} className="product-item" href="!=">
-                            <img src={product.image} alt={product.name} />
+                            <img width={10} height={10} src={product.image_url} alt={product.name} />
                             <h2 className="fw-lighter fs-7">{product.name}</h2>
                             <p className="fw-bold fs-8">${product.price}</p>
                            
