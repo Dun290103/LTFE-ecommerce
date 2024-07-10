@@ -5,7 +5,7 @@ import React from "react";
 function Product() {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(2);
-    const productsPerPage = 5;
+    const productsPerPage = 3;
 
     useEffect(() => {
         fetch("http://localhost:3080/api/products")
@@ -29,11 +29,11 @@ function Product() {
 
     return (
         <div className="App">
-            <h1>Product</h1>
+            <h1 className="thisIsHOne">Product</h1>
             <ul>
                 {
                     currentProducts.map(product => (
-                        <li key={product.id}>
+                        <li key={product.id} className="product-item">
                             <h2>{product.name}</h2>
                             <p>{product.description}</p>
                             <p>{product.price}</p>
