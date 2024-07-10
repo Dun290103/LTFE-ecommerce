@@ -13,12 +13,12 @@ const Layout = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
+          <Route path="product" element={<Product />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="product" element={<Product />} />
         </Route>
       </Routes>
     </>
