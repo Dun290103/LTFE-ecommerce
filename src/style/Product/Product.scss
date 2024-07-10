@@ -1,0 +1,32 @@
+.App {
+
+    .thisIsHOne {
+        color: red;
+    }
+    .product-grid {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // Tạo 4 cột
+        gap: 20px; // Khoảng cách giữa các sản phẩm
+        
+      }
+    
+      .product-item {
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+        &:hover{
+            color:red;
+        }
+      }
+    
+      .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        button {
+          margin-right: 5px;
+        }
+      }
+
+}

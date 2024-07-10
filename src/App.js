@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
-import "./App.css";
+import "./style/App.scss";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 import React, { useEffect, useState } from "react";
 
@@ -23,13 +24,13 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Danh sách Items</h1>
-      <ul>
-        {/* {data.map((item) => (
-          <li key={item.id}>{item.name}</li> // Giả sử item có thuộc tính id và name
-        ))} */}
-      </ul>
+    <div className="app-container">
+      <Navbar />
+      <div className="main-container">
+        <div className="app-content">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };
