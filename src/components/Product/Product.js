@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProductItems from "./ProductItems";
 import React from "react";
 import { Link } from "react-router-dom";
+import { getAllProducts } from "../../services/apiService";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -10,13 +11,16 @@ function Product() {
   const productsPerPage = 12;
 
   useEffect(() => {
-    fetch("http://localhost:3080/api/products")
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-        console.log(data);
-      });
+    fetchListProducts();
   }, []);
+
+  const fetchListProducts = async () => {
+    const res = await getAllProducts();
+
+    if (res && res.data.length > 0) {
+      setProducts(res.data);
+    }
+  };
 
   const handleCategoryChange = (category) => {
     setCurrentCategory(category);
@@ -64,7 +68,11 @@ function Product() {
             <li key={product.id} className="product-item">
               <img width={150} height={150} src={product.image_url} alt={product.name} />
               <h2 className="fw-lighter fs-7">{product.name}</h2>
-              <p className="fw-bold fs-8">${product.price}</p>
+              <p className="fw-bold fs-8">
+                {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(
+                  product.price
+                )}
+              </p>
             </li>
           </Link>
         ))}
