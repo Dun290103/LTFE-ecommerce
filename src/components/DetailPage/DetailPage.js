@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProductInfor from "./ProductInfor";
+import { getDataProduct } from "../../services/apiService";
 
 const DetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+
   useEffect(() => {
-    fetch(`http://localhost:3080/api/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProduct(data);
-      });
+    getProduct();
   }, [id]);
+
+  const getProduct = async () => {
+    const res = await getDataProduct(id);
+
+    if (res && res.data) {
+      setProduct(res.data);
+    }
+  };
+
   return (
     <div className="detail-page-title">
       <h1>Sản phẩm</h1>
