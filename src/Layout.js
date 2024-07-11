@@ -7,6 +7,7 @@ import Register from "./components/Register/Register";
 import AboutPage from "./components/AboutPage/AboutPage";
 import Cart from "./components/Cart/Cart";
 import Product from "./components/Product/Product";
+import DetailPage from "./components/DetailPage/DetailPage";
 const Layout = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Layout = () => {
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="product" element={<Product />} />
+          <Route path="product/:id" element={<DetailPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="login" element={<Login />} />
