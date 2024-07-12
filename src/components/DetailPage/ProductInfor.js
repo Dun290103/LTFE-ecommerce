@@ -1,6 +1,12 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const ProductInfor = ({ product, addToCart }) => {
+    //hiện thông báo thêm vào giỏ hàng thành công
+    const handleAddToCart = () => {
+        addToCart(product);
+        toast.success("ADD TO BAG SUCESSFULLY! :3");
+    }
     return (
         <div className="App">
             <div className="product-detail">
@@ -13,7 +19,7 @@ const ProductInfor = ({ product, addToCart }) => {
                     <p className="product-detail__price">Price: ${product.price}</p>
                     <button
                         className="product-detail__button"
-                        onClick={() => addToCart(product)} // Gọi addToCart khi nhấn nút
+                        onClick={handleAddToCart} // Gọi addToCart khi nhấn nút
                     >
                         ADD TO BAG
                     </button>
