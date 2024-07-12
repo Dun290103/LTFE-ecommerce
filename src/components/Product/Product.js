@@ -2,39 +2,44 @@ import { useEffect, useState } from "react";
 import ProductItems from "./ProductItems";
 import React from "react";
 import { Link } from "react-router-dom";
-import { getAllProducts } from "../../services/apiService";
 
 function Product() {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCategory, setCurrentCategory] = useState("All"); // Khai báo state currentCategory để lưu category hiện tại
   const productsPerPage = 12;
 
   useEffect(() => {
-    fetchListProducts();
+    //lấy dữ liệu danh sách sản phẩm
+    fetch("http://localhost:3080/api/products")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+        console.log(data);
+      });
+    //lấy dữ liệu danh sách phân loại
+    fetch("http://localhost:3080/api/categories") // Gọi API để lấy danh sách category
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(data);
+        console.log(data);
+      });
   }, []);
-
-  const fetchListProducts = async () => {
-    const res = await getAllProducts();
-
-    if (res && res.data.length > 0) {
-      setProducts(res.data);
-    }
-  };
-
-  const handleCategoryChange = (category) => {
-    setCurrentCategory(category);
+  //xử lý sự kiện thay đổi id phân loại
+  const handleCategoryChange = (categoryId) => {
+    setCurrentCategory(categoryId);
     setCurrentPage(1); // Reset lại trang hiện tại khi thay đổi category
   };
-
+  //lọc sản phẩm theo phân loại
   const filteredProducts =
     currentCategory === "All"
       ? products
-      : products.filter((product) => product.category === currentCategory);
+      : products.filter((product) => product.categoryId === currentCategory);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
   let pageNumb;
   const paginate = (pageNumber) => {
@@ -45,7 +50,7 @@ function Product() {
   return (
     <div className="App">
       <h1 className="thisIsHOne">Product</h1>
-      <h1 className="my-4">Product List</h1>
+      <hr />
       <div className="mb-3">
         <label htmlFor="categorySelect" className="form-label">
           Filter by Category:
@@ -56,23 +61,20 @@ function Product() {
           onChange={(e) => handleCategoryChange(e.target.value)}
         >
           <option value="All">All</option>
-          <option value="Category A">Category A</option>
-          <option value="Category B">Category B</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
         </select>
       </div>
       <div className="product-grid">
         {currentProducts.map((product) => (
           <Link key={product.id} to={`/product/${product.id}`}>
-            <span />
-            {product.name}
             <li key={product.id} className="product-item">
-              <img width={150} height={150} src={product.image_url} alt={product.name} />
               <h2 className="fw-lighter fs-7">{product.name}</h2>
-              <p className="fw-bold fs-8">
-                {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(
-                  product.price
-                )}
-              </p>
+              <p className="fw-bold fs-8">${product.price}</p>
+              <p>{categories.find((cat) => cat.id === product.categoryId)?.name || "Unknown"}</p>
             </li>
           </Link>
         ))}

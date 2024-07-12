@@ -1,29 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ProductInfor from "./ProductInfor";
-import { getDataProduct } from "../../services/apiService";
+import { CartContext } from "../Cart/CartContext";
 
 const DetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const { addToCart } = useContext(CartContext); // Lấy addToCart từ CartContext
 
   useEffect(() => {
-    getProduct();
+    fetch(`http://localhost:3080/api/products/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setProduct(data);
+      });
   }, [id]);
-
-  const getProduct = async () => {
-    const res = await getDataProduct(id);
-
-    if (res && res.data) {
-      setProduct(res.data);
-    }
-  };
 
   return (
     <div className="detail-page-title">
-      <h1>Sản phẩm</h1>
-      {product && <ProductInfor product={product} />}
+      <h1>YOUR CHOICE:</h1>
+      <hr />
+      {product && <ProductInfor product={product} addToCart={addToCart} />}
     </div>
   );
 };
+
 export default DetailPage;
