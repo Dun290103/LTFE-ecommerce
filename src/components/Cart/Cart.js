@@ -5,11 +5,12 @@ import { CartContext } from "./CartContext";
 
 const Cart = () => {
   const { cartItems } = useContext(CartContext);
-
+  const { getTotalPrice} = useContext(CartContext);//
   return (
     <div className="container my-3 py-3">
       <h1 className="text-center">Cart</h1>
       <hr />
+      <h2>Total Price: ${getTotalPrice()}</h2>
       {cartItems.length === 0 ? (
         <div className="row">
           <div className="col-md-12 py-5 bg-light text-center">
@@ -29,8 +30,9 @@ const Cart = () => {
               <div className="card">
                 <div className="card-body">
                   <h2 className="card-title">{item.name}</h2>
-                  <p className="card-text">Price: ${item.price}</p>
+                  <p className="card-text">Price: ${item.price * item.quantity}</p>
                   <p className="card-text">{item.description}</p>
+                  <p>Quantity: {item.quantity}</p> {/* Hiển thị số lượng */}
                 </div>
               </div>
             </div>

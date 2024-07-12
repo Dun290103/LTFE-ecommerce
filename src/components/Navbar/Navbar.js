@@ -10,7 +10,7 @@ import { CartContext } from "../Cart/CartContext";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const {getCartCount} = useContext(CartContext);
+  const {getCartCount} = useContext(CartContext);//thêm phương thức đếm số lượng sản phẩm trong giỏ hàng
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className="container">
