@@ -6,14 +6,17 @@ import { FaShoppingCart } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
+ 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className="container">
-        <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/">
-          React Ecommerce
+        <NavLink className="navbar-brand fw-bold fs-4 px-2 " to="/" >
+           <div style={{ display: "flex", alignItems: "center", fontFamily: 'Sagite', }}>
+            GULLVEIG
+            </div>
         </NavLink>
         <Button
           variant="light"
