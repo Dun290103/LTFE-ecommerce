@@ -50,7 +50,6 @@ function Product() {
 
     return (
         <div className="App">
-            <h1 className="thisIsHOne">Product</h1>
             <h1 className="my-4">Product List</h1>
             <div className="mb-3">
                 <label htmlFor="categorySelect" className="form-label">Filter by Category:</label>

@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
+import { CartContext } from "../Cart/CartContext";
 
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
- 
+  const {getCartCount} = useContext(CartContext);//thêm phương thức đếm số lượng sản phẩm trong giỏ hàng
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className="container">
@@ -68,7 +69,7 @@ const Navbar = () => {
               <NavLink to="/cart" className="btn btn-outline-dark m-2">
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <FaShoppingCart style={{ marginRight: "5px" }} />
-                  Cart (0)
+                  Cart ({getCartCount()})
                 </div>
               </NavLink>
             </div>
