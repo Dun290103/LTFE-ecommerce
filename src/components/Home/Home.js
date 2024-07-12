@@ -2,20 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Carousel } from 'react-bootstrap';
 import { useState } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const Home = () => {
 
-    const [index, setIndex] = useState(0);
-  
-    const handleSelect = (selectedIndex) => {
-      setIndex(selectedIndex);
-    };
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
 
   return (
     <>
-    <div>
+      <div>
       <div className="hero border-1 pb-3">
         <div className="card bg-dark text-white border-0 mx-3">
           <img
@@ -27,7 +25,7 @@ const Home = () => {
           <div className="card-img-overlay d-flex align-items-center">
             <div className="container">
               <h5 className="card-title fs-1 text fw-lighter fw-bold">
-              NEW ARRIVALS
+                NEW ARRIVALS
               </h5>
               <p className="card-text fs-5 d-none d-sm-block ">
                 Winter is co'ming. Get ready with our new collection.
@@ -91,6 +89,7 @@ const Home = () => {
     </div>
     </>
   );
+
 }
 
 

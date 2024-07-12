@@ -49,8 +49,9 @@ function Product() {
     };
 
     return (
-        <div className="App">
+        <div className="App">      
             <h1 className="thisIsHOne">Product</h1>
+            <hr/>
             <div className="mb-3">
                 <label htmlFor="categorySelect" className="form-label">Filter by Category:</label>
                 <select
@@ -74,7 +75,7 @@ function Product() {
                             <li key={product.id} className="product-item"  >
                                 <h2 className="fw-lighter fs-7">{product.name}</h2>
                                 <p className="fw-bold fs-8">${product.price}</p>
-                                <p>Category: {categories.find(cat => cat.id === product.categoryId)?.name || 'Unknown'}</p>
+                                <p>{categories.find(cat => cat.id === product.categoryId)?.name || 'Unknown'}</p>
 
                             </li>
                         </Link>
