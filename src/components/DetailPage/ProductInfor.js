@@ -3,7 +3,6 @@ import React from "react";
 const ProductInfor = ({ product }) => {
     return (
         <div className="App">
-            hello
         <div className="product-detail">
             <div className="product-detail__image">
                 <img src={product.image_url} alt={product.name} />
