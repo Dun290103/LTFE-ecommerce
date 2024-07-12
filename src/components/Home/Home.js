@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Carousel } from 'react-bootstrap';
 import { useState } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 const Home = () => {
 
@@ -12,6 +14,7 @@ const Home = () => {
     };
 
   return (
+    <>
     <div>
       <div className="hero border-1 pb-3">
         <div className="card bg-dark text-white border-0 mx-3">
@@ -85,7 +88,8 @@ const Home = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-  </div>
+    </div>
+    </>
   );
 }
 

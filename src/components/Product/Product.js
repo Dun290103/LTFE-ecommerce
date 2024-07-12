@@ -51,7 +51,6 @@ function Product() {
     return (
         <div className="App">
             <h1 className="thisIsHOne">Product</h1>
-            <h1 className="my-4">Product List</h1>
             <div className="mb-3">
                 <label htmlFor="categorySelect" className="form-label">Filter by Category:</label>
                 <select
@@ -71,7 +70,7 @@ function Product() {
                 {
                     currentProducts.map(product => (
 
-                        <Link key={product.id} to={`/product/${product.id}`}><span />{product.name}
+                        <Link key={product.id} to={`/product/${product.id}`}>
                             <li key={product.id} className="product-item"  >
                                 <h2 className="fw-lighter fs-7">{product.name}</h2>
                                 <p className="fw-bold fs-8">${product.price}</p>

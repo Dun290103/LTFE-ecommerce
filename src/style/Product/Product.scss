@@ -4,14 +4,16 @@
   }
 
   .product-grid {
+
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, 1fr); // Tạo 4 cột
     gap: 20px; // Khoảng cách giữa các sản phẩm
 
-    a {
-      text-decoration: none;
-    }
+    a, a:visited, a:hover, a:active {
+      color: inherit; /* Sử dụng màu sắc của phần tử cha */
+      text-decoration: none; /* Loại bỏ gạch chân */
+}
   }
 
   .product-item {
