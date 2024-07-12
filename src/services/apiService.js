@@ -8,4 +8,8 @@ const getDataProduct = (id) => {
   return axios.get(`api/products/${id}`);
 };
 
-export { getAllProducts, getDataProduct };
+const getAllCategories = () => {
+  return axios.get("api/categories");
+};
+
+export { getAllProducts, getDataProduct, getAllCategories };
