@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ProductInfor from "./ProductInfor";
 import { CartContext } from "../Cart/CartContext";
+import { getDataProduct } from "../../services/apiService";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -9,12 +10,16 @@ const DetailPage = () => {
   const { addToCart } = useContext(CartContext); // Lấy addToCart từ CartContext
 
   useEffect(() => {
-    fetch(`http://localhost:3080/api/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProduct(data);
-      });
+    getProduct();
   }, [id]);
+
+  const getProduct = async () => {
+    const res = await getDataProduct(id);
+
+    if (res && res.data) {
+      setProduct(res.data);
+    }
+  };
 
   return (
     <div className="detail-page-title">
