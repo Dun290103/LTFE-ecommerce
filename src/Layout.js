@@ -8,9 +8,11 @@ import AboutPage from "./components/AboutPage/AboutPage";
 import Cart from "./components/Cart/Cart";
 import Product from "./components/Product/Product";
 import DetailPage from "./components/DetailPage/DetailPage";
+import ScrollToTop from "./ScrollToTop";
 const Layout = () => {
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
