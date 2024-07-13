@@ -1,0 +1,38 @@
+@mixin title($weight) {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: $weight;
+    font-style: normal;
+    color: #ffffff;
+}
+
+//hero
+.container {
+    .card-title {
+        @include title(800);
+    }
+
+    .card-text {
+        @include title(200);
+
+    }
+
+    div {
+        .nav-link {
+            .btn {
+                @include title(800);
+
+                &:hover {
+                    background-color: #ffffff;
+                    color: #1F4045;
+                }
+            }
+        }
+    }
+
+}
+.carousel{
+    width: 400px;
+    height: 300px;
+    margin-bottom: 20px;
+}

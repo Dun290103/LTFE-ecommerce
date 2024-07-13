@@ -12,10 +12,15 @@ const Home = () => {
 
   return (
     <>
-      <div>
+      <div style={{ 
+          display: "flex" ,
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          }}>
         <div className="hero border-1 pb-3">
-          <div className="card bg-dark text-white border-0 mx-3">
-            <img className="card-img img-fluid" src="./assets/theme.png" alt="Card" height={500} />
+          <div className="card bg-dark border-0 mx-3">
+            <img className="card-img img-fluid" src="./assets/hero.jpg" alt="Card" width={800} height={500} />
             <div className="card-img-overlay d-flex align-items-center">
               <div className="container">
                 <h5 className="card-title fs-1 text fw-lighter fw-bold">NEW ARRIVALS</h5>
@@ -24,7 +29,7 @@ const Home = () => {
                 </p>
                 <div>
                   <NavLink className="nav-link" to="/product">
-                    <button type="button" className="btn btn-outline-light fw-bold">
+                    <button type="button" className="btn btn-outline-light">
                       SHOP NOW
                     </button>
                   </NavLink>
@@ -34,11 +39,11 @@ const Home = () => {
           </div>
         </div>
 
-        <Carousel activeIndex={index} onSelect={handleSelect} fade data-bs-theme="dark" slide>
-          <Carousel.Item>
+        <Carousel activeIndex={index} onSelect={handleSelect} fade data-bs-theme="dark" slide >
+          <Carousel.Item >
             <img
-              className="d-flex mx-auto carousel-image w-2 h-2"
-              src="./assets/vongtay.webp"
+              className="carousel d-flex mx-auto carousel-image w-2 h-2"
+              src="./assets/prd1.webp"
               alt="Bracelet"
             />
             <Carousel.Caption>
@@ -48,19 +53,8 @@ const Home = () => {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              className="d-flex mx-auto carousel-image   w-2 h-2"
-              src="./assets/ring.png"
-              alt="Ring"
-            />
-            <Carousel.Caption>
-              <h3>Ring</h3>
-              <p>Elegant and timeless rings.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-flex mx-auto carousel-image w-2 h-2"
-              src="./assets/neckles1.png"
+              className="carousel d-flex mx-auto carousel-image w-2 h-2"
+              src="./assets/prd3.webp"
               alt="Necklace"
             />
             <Carousel.Caption>
@@ -70,8 +64,8 @@ const Home = () => {
           </Carousel.Item>
           <Carousel.Item>
             <img
-              className="d-flex mx-auto carousel-image  w-2 h-2"
-              src="./assets/earing2.png"
+              className="carousel d-flex mx-auto carousel-image  w-2 h-2"
+              src="./assets/prd5.jpg"
               alt="Earrings"
             />
             <Carousel.Caption>
