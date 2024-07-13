@@ -1,8 +1,12 @@
-.App {
-  .thisIsHOne {
-    color: red;
-  }
+//productName
+@mixin product-name {
+  font-family: "Merriweather Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
+.App {
   .product-grid {
 
     list-style: none;
@@ -10,9 +14,15 @@
     grid-template-columns: repeat(4, 1fr); // Tạo 4 cột
     gap: 20px; // Khoảng cách giữa các sản phẩm
 
-    a, a:visited, a:hover, a:active {
-      color: inherit; /* Sử dụng màu sắc của phần tử cha */
-      text-decoration: none; /* Loại bỏ gạch chân */
+    a,
+    a:visited,
+    a:hover,
+    a:active {
+      /* Sử dụng màu sắc của phần tử cha */
+      color: inherit;
+      /* Loại bỏ gạch chân */
+
+      text-decoration: none;
     }
   }
 
@@ -30,6 +40,9 @@
     &:hover {
       color: red;
     }
+
+    @include product-name;
+
   }
 
   .pagination {

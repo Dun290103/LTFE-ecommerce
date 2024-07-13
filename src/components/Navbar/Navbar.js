@@ -44,7 +44,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/about">
-                  About
+                  Guide
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -53,7 +53,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className="buttons text-center" style={{ fontFamily: "Bodoni Moda, regular" }}>
+            <div className="buttons text-center">
               <NavLink to="/login" className="btn btn-outline-dark m-2">
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <FaSignInAlt style={{ marginRight: "5px" }} />
