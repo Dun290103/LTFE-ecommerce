@@ -22,7 +22,7 @@ const Home = () => {
           <div className="card bg-dark border-0 mx-3">
             <img className="card-img img-fluid" src="./assets/hero.jpg" alt="Card" width={800} height={500} />
             <div className="card-img-overlay d-flex align-items-center">
-              <div className="container">
+              <div className="container" style={{color:"#ffffff"}}>
                 <h5 className="card-title fs-1 text fw-lighter fw-bold">NEW ARRIVALS</h5>
                 <p className="card-text fs-5 d-none d-sm-block ">
                   Winter is co'ming. Get ready with our new collection.

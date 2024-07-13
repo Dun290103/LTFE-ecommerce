@@ -6,21 +6,35 @@ const AboutPage = () => {
       <div className="container my-3 py-3">
         <h1 className="text-center">Hướng dẫn mua hàng  💵</h1>
         <hr />
-        <p className="lead text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-          facere doloremque veritatis odit similique sequi. Odit amet fuga nam
-          quam quasi facilis sed doloremque saepe sint perspiciatis explicabo
-          totam vero quas provident ipsam, veritatis nostrum velit quos
-          recusandae est mollitia esse fugit dolore laudantium. Ex vel explicabo
-          earum unde eligendi autem praesentium, doloremque distinctio nesciunt
-          porro tempore quis eaque labore voluptatibus ea necessitatibus
-          exercitationem tempora molestias. Ad consequuntur veniam sequi ullam
-          tempore vel tenetur soluta dolore sunt maxime aliquam corporis est,
-          quo saepe dolorem optio minus sint nemo totam dolorum! Reprehenderit
-          delectus expedita a alias nam recusandae illo debitis repellat libero,
-          quasi explicabo molestiae saepe, dolorem tempore itaque eveniet quam
-          dignissimos blanditiis excepturi harum numquam vel nihil? Ipsum
-        </p>
+        <div className="lead text-start" style={{
+          display: "flex",
+          flexDirection: "row"
+        }}><p className="fw-bold">B1</p><p className="context">: Nhấp vào  <b>Products</b> trên thanh điều hướng hoặc nhấp vào  <b>SHOP NOW</b> </p></div>
+        <img src="./assets/HOW/HD1.png" width={600} height={300} />
+
+        <div className="lead text-start" style={{
+          display: "flex",
+          flexDirection: "row"
+        }}><p className="fw-bold">B2</p><p className="context">: Lựa chọn sản phẩm mình muốn</p> Lúc này trang web sẽ điều hướng đến trang chi tiết sản phẩm</div>
+        <img src="./assets/HOW/HD2.png" width={600} height={300} />
+
+        <div className="lead text-start" style={{
+          display: "flex",
+          flexDirection: "row"
+        }}><p className="fw-bold">B3</p><p className="context">: Nhấp vào <b>Add to card</b> để thêm sản phẩm vào giỏ hàng </p></div>
+        <img src="./assets/HOW/HD3.png" width={600} height={300} />
+
+        <div className="lead text-start" style={{
+          display: "flex",
+          flexDirection: "row"
+        }}><p className="fw-bold">B4</p><p className="context">: Nhấp vào <b>Go to cart</b> (hoặc <b>Cart</b>) để xem giỏ hàng</p></div>
+        <img src="./assets/HOW/HD4.png" width={600} height={300} />
+
+        <div className="lead text-start" style={{
+          display: "flex",
+          flexDirection: "row"
+        }}><p className="fw-bold">B5</p>: Lúc này bạn có thể kiểm tra số lượng, tổng tiền trong giỏ hàng</div>
+        <img src="./assets/HOW/HD5.png" width={600} height={300} />
 
         <h2 className="text-center py-4">Our Products</h2>
         <div className="row">
