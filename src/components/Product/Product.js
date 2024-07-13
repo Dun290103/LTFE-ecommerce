@@ -51,6 +51,8 @@ function Product() {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     pageNumb = pageNumber;
+    //thêm scroll to top
+    window.scrollTo(0, 0);
   };
 
   return (
