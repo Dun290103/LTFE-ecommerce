@@ -47,8 +47,6 @@ const Home = () => {
               alt="Bracelet"
             />
             <Carousel.Caption>
-              <h3>Bracelet</h3>
-              <p>Discover our unique bracelets.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -58,8 +56,6 @@ const Home = () => {
               alt="Necklace"
             />
             <Carousel.Caption>
-              <h3>Necklace</h3>
-              <p>Stunning necklaces for every occasion.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -69,8 +65,6 @@ const Home = () => {
               alt="Earrings"
             />
             <Carousel.Caption>
-              <h3>Earrings</h3>
-              <p>Beautiful earrings to complement your look.</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
