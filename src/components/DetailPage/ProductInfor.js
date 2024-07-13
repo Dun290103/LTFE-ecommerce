@@ -21,7 +21,7 @@ const ProductInfor = ({ product, addToCart }) => {
               height="400px"
             />
           </div>
-          <div className="col-md-6 col-md-6 py-5">
+          <div className="product-description col-md-6 col-md-6 py-5">
             <h1 className="display-5">{product.name}</h1>
             <h3 className="display-6  my-4">
               {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(

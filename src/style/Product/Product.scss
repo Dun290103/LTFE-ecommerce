@@ -2,8 +2,9 @@
 @mixin product-name {
   font-family: "Merriweather Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
+  color: #1F4045;
 }
 
 .App {
@@ -21,7 +22,6 @@
       /* Sử dụng màu sắc của phần tử cha */
       color: inherit;
       /* Loại bỏ gạch chân */
-
       text-decoration: none;
     }
   }
@@ -38,7 +38,7 @@
     }
 
     &:hover {
-      color: red;
+      color: #6a939a;
     }
 
     @include product-name;

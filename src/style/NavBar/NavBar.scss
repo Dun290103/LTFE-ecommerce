@@ -4,7 +4,7 @@
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
-    // color: red;
+    color: #1F4045;
 }
 
 //navbar
@@ -17,11 +17,8 @@
 
 
 .navbar {
+    @include logo;
     .container {
-        .navbar-brand {
-            @include logo;
-        }
-
         .navbar-collapse {
             @include navBar;
         }
