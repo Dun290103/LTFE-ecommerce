@@ -30,10 +30,18 @@ const Cart = () => {
             <div key={item.id} className="col-md-4 mb-4">
               <div className="card">
                 <div className="card-body">
-                  <h2 className="card-title">{item.name}</h2>
-                  <p className="card-text">Price: ${item.price * item.quantity}</p>
-                  <p className="card-text">{item.description}</p>
-                  <p>Quantity: {item.quantity}</p> {/* Hiển thị số lượng */}
+                  <h2 className="card-title" style={{color: "black"}}>{item.name}</h2>
+                        <img
+                    className="img-fluid "
+                    src={item.image_url}
+                    alt="item.name"
+                    about="item.name"
+                    width="250px"
+                    height="250px"
+                  />
+                  <p className="card-text" style={{color: "black", fontWeight: "bold"}}>Price: ${item.price * item.quantity}</p>
+                  <p className="card-text"style={{color: "black"}}>{item.description}</p>
+                  <p style={{color: "black"}}>Quantity: {item.quantity}</p> {/* Hiển thị số lượng */}
                 </div>
               </div>
             </div>
