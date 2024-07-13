@@ -7,7 +7,7 @@ const Cart = () => {
   const { cartItems } = useContext(CartContext);
   const { getTotalPrice} = useContext(CartContext);//
   return (
-    <div className="container my-3 py-3">
+    <div className="container my-3 py-3 r">
       <h1 className="text-center">Cart</h1>
       <hr />
       
@@ -39,9 +39,11 @@ const Cart = () => {
                     width="250px"
                     height="250px"
                   />
-                  <p className="card-text" style={{color: "black", fontWeight: "bold"}}>Price: ${item.price * item.quantity}</p>
+                  <p className="card-text" style={{color: "black", fontWeight: "bold"}}>Price: $
+                  {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(item.price * item.quantity)}                 
+                   </p>
                   <p className="card-text"style={{color: "black"}}>{item.description}</p>
-                  <p style={{color: "black"}}>Quantity: {item.quantity}</p> {/* Hiển thị số lượng */}
+                  <p className="card-text" style={{color: "black"}}>Quantity: {item.quantity}</p> {/* Hiển thị số lượng */}
                 </div>
               </div>
             </div>
@@ -49,7 +51,7 @@ const Cart = () => {
         </div>
       
       )}
-      <h2 style={{textAlign: "right"}}>Total Price: ${getTotalPrice()}</h2>
+      <h2 className="card-text" style={{textAlign: "right"}}>Total price:${new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(getTotalPrice())}</h2>
     </div>
   );
 };

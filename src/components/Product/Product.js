@@ -80,8 +80,8 @@ function Product() {
         {currentProducts.map((product) => (
           <Link key={product.id} to={`/product/${product.id}`}>
             <li key={product.id} className="product-item">
-              <img className="card-img-top p-3" src={product.image_url} alt="Card" />
-              <h2 className="productName fw-lighter fs-7">{product.name}</h2>
+              <img className="card-img-top" src={product.image_url} alt="Card" />
+              <h2 className="productName fw-lighter fs-7 ">{product.name}</h2>
               <p className="productDes fw-bold fs-8">
                 {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(
                   product.price

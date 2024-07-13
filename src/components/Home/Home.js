@@ -20,7 +20,7 @@ const Home = () => {
           }}>
         <div className="hero border-1 pb-3">
           <div className="card bg-dark border-0 mx-3">
-            <img className="card-img img-fluid" src="./assets/hero.jpg" alt="Card" width={800} height={500} />
+            <img className="card-img img-fluid" src="./assets/hero.jpg" alt="Card" style={{display:"flex",width: "1920px", height: "600px"}}/>
             <div className="card-img-overlay d-flex align-items-center">
               <div className="container" style={{color:"#ffffff"}}>
                 <h5 className="card-title fs-1 text fw-lighter fw-bold">NEW ARRIVALS</h5>
@@ -38,11 +38,15 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        <Carousel activeIndex={index} onSelect={handleSelect} fade data-bs-theme="dark" slide >
+          <div className="text-2">
+          <hr/>
+            <h2>BEST COLLECTION</h2>
+            <hr/>
+          </div>
+        <Carousel activeIndex={index} onSelect={handleSelect} fade data-bs-theme="dark" slide className=".carousel-image-prev-next">
           <Carousel.Item >
             <img
-              className="carousel d-flex mx-auto carousel-image w-2 h-2"
+              className="carousel d-flex mx-auto carousel-image w-5 h-5"
               src="./assets/prd1.webp"
               alt="Bracelet"
             />
@@ -52,7 +56,7 @@ const Home = () => {
           <Carousel.Item>
             <img
               className="carousel d-flex mx-auto carousel-image w-2 h-2"
-              src="./assets/prd3.webp"
+              src="./assets/prd1.jpg"
               alt="Necklace"
             />
             <Carousel.Caption>
@@ -61,12 +65,22 @@ const Home = () => {
           <Carousel.Item>
             <img
               className="carousel d-flex mx-auto carousel-image  w-2 h-2"
-              src="./assets/prd5.jpg"
+              src="./assets/prd4.webp"
               alt="Earrings"
             />
             <Carousel.Caption>
             </Carousel.Caption>
           </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="carousel d-flex mx-auto carousel-image  w-2 h-2"
+              src="./assets/prd6.webp"
+              alt="Earrings"
+            />
+            <Carousel.Caption>
+            </Carousel.Caption>
+          </Carousel.Item>
+        
         </Carousel>
       </div>
     </>
