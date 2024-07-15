@@ -9,6 +9,7 @@ import Cart from "./components/Cart/Cart";
 import Product from "./components/Product/Product";
 import DetailPage from "./components/DetailPage/DetailPage";
 import ScrollToTop from "./ScrollToTop";
+import { ToastContainer } from "react-toastify";
 const Layout = () => {
   return (
     <>
@@ -25,6 +26,19 @@ const Layout = () => {
           <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 };

@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProductInfor from "./ProductInfor";
-import { CartContext } from "../Cart/CartContext";
 import { getDataProduct } from "../../services/apiService";
 
 const DetailPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const { addToCart } = useContext(CartContext); // Lấy addToCart từ CartContext
 
   useEffect(() => {
     getProduct();
@@ -25,7 +23,7 @@ const DetailPage = () => {
     <div className="detail-page-title">
       <h1>YOUR CHOICE:</h1>
       <hr />
-      {product && <ProductInfor product={product} addToCart={addToCart} />}
+      {product && <ProductInfor product={product} />}
     </div>
   );
 };
