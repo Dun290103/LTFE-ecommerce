@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { addCart } from "../../redux/action/cartAction";
 
-const ProductInfor = ({ product, addToCart }) => {
+const ProductInfor = ({ product }) => {
+  const dispatch = useDispatch();
+
   //hiện thông báo thêm vào giỏ hàng thành công
-  const handleAddToCart = () => {
-    addToCart(product);
+  const handleAddToCart = (product) => {
+    dispatch(addCart(product));
     toast.success("ADD TO BAG SUCESSFULLY! :3", { autoClose: 1000 });
   };
   return (
@@ -29,7 +33,7 @@ const ProductInfor = ({ product, addToCart }) => {
               )}
             </h3>
             <p className="lead">{product.description}</p>
-            <button className="btn btn-outline-dark" onClick={() => handleAddToCart()}>
+            <button className="btn btn-outline-dark" onClick={() => handleAddToCart(product)}>
               Add to Cart
             </button>
             <Link to="/cart" className="btn btn-dark mx-3">
