@@ -1,30 +1,24 @@
-const ProductItems = ({ productsPerPage, totalProducts, paginate, currentPage, num }) => {
-    const pageNumbers = [];
+const ProductItems = (props) => {
+  const { pagination, onPageChange } = props;
+  const { _page, _limit, _totalRows } = pagination;
 
-    // Tạo mảng các số trang
-    for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
-        pageNumbers.push(i);
+  const totalPages = Math.ceil(_totalRows / _limit);
+
+  const handlPageChange = (newPage) => {
+    if (onPageChange) {
+      onPageChange(newPage);
     }
+  };
 
-    return (
-        <nav>
-            <ul className="pagination">
-                {/* Render các số trang */}
-                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-            <span className="page-link" onClick={() => currentPage > 1 && paginate(currentPage - 1)}>Previous</span>
-                </li>
-            {pageNumbers.map(number => (
-            <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
-                <a onClick={() => paginate(number)} href={num} className="page-link">
-                    {number}
-                </a>
-            </li>
-        ))}
-        <li className={`page-item ${currentPage === pageNumbers.length ? 'disabled' : ''}`}>
-            <span className="page-link" onClick={() => currentPage < pageNumbers.length && paginate(currentPage + 1)}>Next</span>
-        </li>
-            </ul>
-        </nav>
-    );
+  return (
+    <div>
+      <button disable={_page <= 1} onclick={() => handlPageChange(_page - 1)}>
+        Prev
+      </button>
+      <button disable={_page >= totalPages} onclick={() => handlPageChange(_page + 1)}>
+        Prev
+      </button>
+    </div>
+  );
 };
 export default ProductItems;
