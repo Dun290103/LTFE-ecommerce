@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { TiArrowLeftThick } from "react-icons/ti";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { addCart, delCart } from "../../redux/action/cartAction";
+import EmptyCart from "../EmptyCart/EmptyCart";
 
 // Hàm format tiền tệ theo định dạng "vi-VN"
 const formatCurrency = (value) => {
@@ -40,17 +40,7 @@ const Cart = () => {
       <hr />
 
       {state.length === 0 ? (
-        <div className="row">
-          <div className="col-md-12 py-5 bg-light text-center">
-            <h4 className="p-3 display-5">Your Cart is Empty</h4>
-            <Link to="/product" className="btn btn-outline-dark mx-4">
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <TiArrowLeftThick style={{ marginRight: "5px" }} />
-                Continue Shopping
-              </div>
-            </Link>
-          </div>
-        </div>
+        <EmptyCart />
       ) : (
         <>
           <section className="h-100 gradient-custom">
