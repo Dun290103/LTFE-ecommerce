@@ -5,14 +5,7 @@ import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { addCart, delCart } from "../../redux/action/cartAction";
 import EmptyCart from "../EmptyCart/EmptyCart";
-
-// Hàm format tiền tệ theo định dạng "vi-VN"
-const formatCurrency = (value) => {
-  return new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-  }).format(value);
-};
+import formatCurrency from "../../utils/formatCurrency";
 
 const Cart = () => {
   let subtotal = 0;

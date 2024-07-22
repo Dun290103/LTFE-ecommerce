@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://json-server-handmade.onrender.com/",
+  // baseURL: "https://json-server-handmade.onrender.com/",
+  baseURL: "http://localhost:3080/",
 });
 
 // Add a request interceptor
