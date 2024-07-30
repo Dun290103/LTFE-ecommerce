@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import queryString from "query-string";
-import { Link } from "react-router-dom";
 import { getAllProducts } from "../../services/apiService";
 import Pagination from "./Pagination";
-import formatCurrency from "../../utils/formatCurrency";
 import ProductFilters from "./ProductFilters";
 import "./Product.scss";
+import ProductList from "./ProductList";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -49,17 +48,10 @@ function Product() {
           <ProductFilters filters={filters} onChange={handleFiltersChange} />
         </div>
         <div className="content">
-          {products.map((product) => (
-            <Link key={product.id} to={`/product/${product.id}`}>
-              <li key={product.id} className="product-item">
-                <img className="card-img-top" src={product.image_url} alt="Card" />
-                <h2 className="productName fw-lighter fs-6 ">{product.name}</h2>
-                <p className="productDes fw-bold fs-8">{formatCurrency(product.price)}</p>
-                {/* <p>{categories.find((cat) => cat.id === product.categoryId)?.name || "Unknown"}</p> */}
-              </li>
-            </Link>
-          ))}
-          <Pagination pagination={pagination} onPageChange={handlPageChange} />
+          <div className="list-product">
+            <ProductList products={products} />
+            <Pagination pagination={pagination} onPageChange={handlPageChange} />
+          </div>
         </div>
       </div>
     </div>
