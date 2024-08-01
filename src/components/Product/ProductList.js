@@ -4,7 +4,6 @@ import { BsSuitHeartFill } from "react-icons/bs";
 
 const ProductList = (props) => {
   const { products } = props;
-  console.log(products);
 
   return (
     <div className="product-cards">

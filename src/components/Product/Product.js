@@ -5,6 +5,7 @@ import Pagination from "./Pagination";
 import ProductFilters from "./ProductFilters";
 import "./Product.scss";
 import ProductList from "./ProductList";
+import ProductBanner from "./ProductBanner";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -16,6 +17,8 @@ function Product() {
   const [filters, setFilters] = useState({
     _limit: 12,
     _page: 1,
+    _sort: "price",
+    _order: "asc",
   });
 
   useEffect(() => {
@@ -35,6 +38,10 @@ function Product() {
     setFilters((prevFilters) => ({ ...prevFilters, _page: newPage }));
   };
 
+  const handlSortChange = (newSortvalue) => {
+    setFilters((prevFilters) => ({ ...prevFilters, _order: newSortvalue }));
+  };
+
   const handleFiltersChange = (newFilters) => {
     setFilters((prevFilters) => ({ ...prevFilters, ...newFilters }));
   };
@@ -48,6 +55,7 @@ function Product() {
           <ProductFilters filters={filters} onChange={handleFiltersChange} />
         </div>
         <div className="content">
+          <ProductBanner currentSort={filters._order} onChange={handlSortChange} />
           <div className="list-product">
             <ProductList products={products} />
             <Pagination pagination={pagination} onPageChange={handlPageChange} />
