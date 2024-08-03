@@ -34,12 +34,16 @@ function Product() {
     fetchProductList();
   }, [filters]);
 
-  const handlPageChange = (newPage) => {
+  const handlePageChange = (newPage) => {
     setFilters((prevFilters) => ({ ...prevFilters, _page: newPage }));
   };
 
-  const handlSortChange = (newSortvalue) => {
+  const handleSortChange = (newSortvalue) => {
     setFilters((prevFilters) => ({ ...prevFilters, _order: newSortvalue }));
+  };
+
+  const handlePageSizeChange = (newSize) => {
+    setFilters((prevFilters) => ({ ...prevFilters, _limit: newSize }));
   };
 
   const handleFiltersChange = (newFilters) => {
@@ -55,10 +59,14 @@ function Product() {
           <ProductFilters filters={filters} onChange={handleFiltersChange} />
         </div>
         <div className="content">
-          <ProductBanner currentSort={filters._order} onChange={handlSortChange} />
+          <ProductBanner
+            currentSort={filters._order}
+            onChange={handleSortChange}
+            onPageSizeChange={handlePageSizeChange}
+          />
           <div className="list-product">
             <ProductList products={products} />
-            <Pagination pagination={pagination} onPageChange={handlPageChange} />
+            <Pagination pagination={pagination} onPageChange={handlePageChange} />
           </div>
         </div>
       </div>

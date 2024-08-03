@@ -3,10 +3,14 @@ import Tabs from "react-bootstrap/Tabs";
 import { GoTriangleDown } from "react-icons/go";
 
 const ProductBanner = (props) => {
-  const { currentSort, onChange } = props;
+  const { currentSort, onChange, onPageSizeChange } = props;
 
   const handleSortChange = (newValue) => {
     if (onChange) onChange(newValue);
+  };
+
+  const handlePageSizeChange = (newSize) => {
+    if (onPageSizeChange) onPageSizeChange(newSize);
   };
 
   return (
@@ -34,7 +38,10 @@ const ProductBanner = (props) => {
 
       <div className="pagination-select-container">
         <label className="pagination-label">Show:</label>
-        <select className="pagination-select">
+        <select
+          className="pagination-select"
+          onChange={(e) => handlePageSizeChange(+e.target.value)}
+        >
           <option value="12">12</option>
           <option value="24">24</option>
           <option value="36">36</option>
