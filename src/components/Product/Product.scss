@@ -17,6 +17,7 @@
     gap: 2.5rem;
 
     /* ================= Sidebar here =================== */
+
     .sidebar {
       width: 25%;
       height: 100%;
@@ -28,6 +29,7 @@
         gap: 0.75rem;
 
         /* ================= FilterByCategory here =================== */
+
         .category-list-container {
           .category-list {
             display: flex;
@@ -65,9 +67,109 @@
       flex-direction: column;
       gap: 2.5rem;
 
+      /* ================= Css for ProductBanner.js here =================== */
+
+      .controls-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        /* ================= Left Part here =================== */
+
+        .sort-options {
+          .nav-tabs {
+            border-bottom: none; // Xóa border dưới cùng của thanh tabs
+          }
+
+          .nav-link {
+            border: none; // Xóa border của tab
+            padding: 0.5rem 1rem;
+            margin-bottom: -1px;
+            color: #767676; // Màu chữ mặc định
+            background-color: transparent; // Nền trong suốt để chỉ có underline
+            text-decoration: none; // Bỏ gạch chân mặc định
+            font-weight: 500; // Thay đổi độ dày chữ
+
+            position: relative; // Để có thể sử dụng pseudo-elements
+
+            &:hover {
+              color: #262626; // Màu chữ khi hover
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              height: 2px;
+              background-color: #262626; // Màu underline khi hover
+              transform: scaleX(0); // Ẩn underline
+              transition: transform 0.3s ease, background-color 0.3s ease; // Hiệu ứng chuyển tiếp
+            }
+
+            &.active {
+              color: #262626; // Màu chữ khi tab đang được chọn
+            }
+
+            &.active::after {
+              transform: scaleX(1); // Hiện underline khi tab đang được chọn
+              background-color: #262626; // Màu underline khi tab đang được chọn
+            }
+          }
+        }
+        /* ================= Left Part end =================== */
+        /* ================= Right Part here =================== */
+
+        .pagination-select-container {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: #767676;
+          position: relative;
+
+          .pagination-label {
+            display: block;
+          }
+
+          .pagination-select {
+            width: 5rem;
+            border: 1px solid rgb(229 231 235);
+            padding: 0.25rem 1rem;
+            cursor: pointer;
+            color: #262626;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            display: block;
+            appearance: none;
+            padding-right: 2.5rem;
+
+            &:focus-within {
+              outline: none;
+            }
+            &:focus-visible {
+              border-color: #262626;
+            }
+          }
+
+          .pagination-dropdown-icon {
+            position: absolute;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+          }
+        }
+        /* ================= Right Part end =================== */
+      }
+      /* ================= Css for ProductBanner.js end =================== */
+
       /* ================= list-product here =================== */
       .list-product {
-        /* ================= product-cards here =================== */
+        /* ================= Css for ProductList.js here =================== */
         .product-cards {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -174,7 +276,7 @@
             }
           }
         }
-        /* ================= product-cards end =================== */
+        /* ================= Css for ProductList.js end =================== */
       }
     }
   }
