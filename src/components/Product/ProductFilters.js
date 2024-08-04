@@ -4,19 +4,19 @@ import FilterByCategory from "./Filters/FilterByCategory";
 const ProductFilters = (props) => {
   const { filters, onChange } = props;
 
-  const handleCategoryChange = (newCategoryId) => {
+  const handleFilterChange = (filterName, newValue) => {
     if (!onChange) return;
 
     const newFilters = {
-      ...filters,
-      categoryId: newCategoryId,
+      [filterName]: newValue,
+      _page: 1,
     };
     onChange(newFilters);
   };
 
   return (
     <div className="filter-container">
-      <FilterByCategory onChange={handleCategoryChange} />
+      <FilterByCategory onChange={handleFilterChange} />
     </div>
   );
 };

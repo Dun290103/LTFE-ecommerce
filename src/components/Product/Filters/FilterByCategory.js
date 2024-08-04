@@ -21,7 +21,7 @@ const FilterByCategory = (props) => {
 
   const handleCategoryClick = (category) => {
     if (onChange) {
-      onChange(category.id);
+      onChange("categoryId", category.id);
     }
   };
 

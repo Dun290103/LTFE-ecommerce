@@ -56,7 +56,7 @@ function Product() {
       <hr />
       <div className="product-layout">
         <div className="sidebar">
-          <ProductFilters filters={filters} onChange={handleFiltersChange} />
+          <ProductFilters onChange={handleFiltersChange} />
         </div>
         <div className="content">
           <ProductBanner

@@ -3,7 +3,7 @@ import ReactPaginate from "react-paginate";
 
 const Pagination = (props) => {
   const { pagination, onPageChange } = props;
-  const { _limit, _totalRows } = pagination;
+  const { _page, _limit, _totalRows } = pagination;
 
   const totalPages = Math.ceil(_totalRows / _limit);
 
@@ -23,6 +23,7 @@ const Pagination = (props) => {
   return (
     <nav aria-label="Page navigation example">
       <ReactPaginate
+        forcePage={_page - 1}
         previousLabel={"Previous"}
         nextLabel={"Next"}
         breakLabel={"..."}
