@@ -1,59 +1,47 @@
 import React from "react";
+import ReactPaginate from "react-paginate";
 
 const Pagination = (props) => {
   const { pagination, onPageChange } = props;
-  const { _page, _limit, _totalRows } = pagination;
+  const { _limit, _totalRows } = pagination;
 
   const totalPages = Math.ceil(_totalRows / _limit);
 
   const handlePageChange = (newPage) => {
-    if (onPageChange && newPage >= 1 && newPage <= totalPages) {
-      onPageChange(newPage);
+    const selectedPage = +newPage.selected + 1; // react-paginate uses 0-based indexing
+
+    if (onPageChange) {
+      onPageChange(selectedPage);
 
       window.scrollTo({
         top: 0,
-        behavior: "smooth", // This adds a smooth scrolling effect
+        behavior: "smooth",
       });
     }
   };
 
-  // Create an array of page numbers
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
-
   return (
     <nav aria-label="Page navigation example">
-      <ul className="pagination justify-content-center">
-        <li className={`page-item ${_page <= 1 ? "disabled" : ""}`}>
-          <button
-            className="page-link"
-            onClick={() => handlePageChange(_page - 1)}
-            disabled={_page <= 1}
-          >
-            Previous
-          </button>
-        </li>
-
-        {pageNumbers.map((number) => (
-          <li key={number} className={`page-item ${_page === number ? "active" : ""}`}>
-            <button className="page-link" onClick={() => handlePageChange(number)}>
-              {number}
-            </button>
-          </li>
-        ))}
-
-        <li className={`page-item ${_page >= totalPages ? "disabled" : ""}`}>
-          <button
-            className="page-link"
-            onClick={() => handlePageChange(_page + 1)}
-            disabled={_page >= totalPages}
-          >
-            Next
-          </button>
-        </li>
-      </ul>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        breakLabel={"..."}
+        pageCount={totalPages}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        onPageChange={handlePageChange}
+        containerClassName={"pagination justify-content-center"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+        previousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        breakClassName={"page-item"}
+        breakLinkClassName={"page-link"}
+        activeClassName={"active"}
+        disabledClassName={"disabled"}
+      />
     </nav>
   );
 };
