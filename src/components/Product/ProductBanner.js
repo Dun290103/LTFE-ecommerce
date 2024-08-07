@@ -1,12 +1,12 @@
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import { Tabs, TabList, Tab, TabIndicator } from "@chakra-ui/react";
 import { GoTriangleDown } from "react-icons/go";
 
 const ProductBanner = (props) => {
-  const { currentSort, onChange, onPageSizeChange } = props;
+  const { currentSort, onSortChange, onPageSizeChange } = props;
 
-  const handleSortChange = (newValue) => {
-    if (onChange) onChange(newValue);
+  const handleSortChange = (index) => {
+    const newSortValue = index === 0 ? "asc" : "desc";
+    if (onSortChange) onSortChange(newSortValue);
   };
 
   const handlePageSizeChange = (newSize) => {
@@ -19,14 +19,18 @@ const ProductBanner = (props) => {
                             Left Part Start here
         ======================================================== */}
 
-      <div className="sort-options">
+      <div>
         <Tabs
-          id="controlled-tab-example"
-          activeKey={currentSort}
-          onSelect={(k) => handleSortChange(k)}
+          index={currentSort === "asc" ? 0 : 1}
+          onChange={(index) => handleSortChange(index)}
+          position="relative"
+          variant="unstyled"
         >
-          <Tab eventKey="asc" title="Giá thấp tới cao"></Tab>
-          <Tab eventKey="desc" title="Giá cao tới thấp"></Tab>
+          <TabList>
+            <Tab>Giá thấp tới cao</Tab>
+            <Tab>Giá cao tới thấp</Tab>
+          </TabList>
+          <TabIndicator mt="-1.5px" height="2px" bg="black" borderRadius="1px" />
         </Tabs>
       </div>
       {/* =========================================================

@@ -75,51 +75,6 @@
         justify-content: space-between;
         align-items: center;
 
-        /* ================= Left Part here =================== */
-
-        .sort-options {
-          .nav-tabs {
-            border-bottom: none; // Xóa border dưới cùng của thanh tabs
-          }
-
-          .nav-link {
-            border: none; // Xóa border của tab
-            padding: 0.5rem 1rem;
-            margin-bottom: -1px;
-            color: #767676; // Màu chữ mặc định
-            background-color: transparent; // Nền trong suốt để chỉ có underline
-            text-decoration: none; // Bỏ gạch chân mặc định
-            font-weight: 500; // Thay đổi độ dày chữ
-
-            position: relative; // Để có thể sử dụng pseudo-elements
-
-            &:hover {
-              color: #262626; // Màu chữ khi hover
-            }
-
-            &::after {
-              content: "";
-              position: absolute;
-              left: 0;
-              bottom: 0;
-              width: 100%;
-              height: 2px;
-              background-color: #262626; // Màu underline khi hover
-              transform: scaleX(0); // Ẩn underline
-              transition: transform 0.3s ease, background-color 0.3s ease; // Hiệu ứng chuyển tiếp
-            }
-
-            &.active {
-              color: #262626; // Màu chữ khi tab đang được chọn
-            }
-
-            &.active::after {
-              transform: scaleX(1); // Hiện underline khi tab đang được chọn
-              background-color: #262626; // Màu underline khi tab đang được chọn
-            }
-          }
-        }
-        /* ================= Left Part end =================== */
         /* ================= Right Part here =================== */
 
         .pagination-select-container {

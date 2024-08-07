@@ -38,8 +38,8 @@ function Product() {
     setFilters((prevFilters) => ({ ...prevFilters, _page: newPage }));
   };
 
-  const handleSortChange = (newSortvalue) => {
-    setFilters((prevFilters) => ({ ...prevFilters, _order: newSortvalue }));
+  const handleSortChange = (newSortValue) => {
+    setFilters((prevFilters) => ({ ...prevFilters, _order: newSortValue }));
   };
 
   const handlePageSizeChange = (newSize) => {
@@ -61,7 +61,7 @@ function Product() {
         <div className="content">
           <ProductBanner
             currentSort={filters._order}
-            onChange={handleSortChange}
+            onSortChange={handleSortChange}
             onPageSizeChange={handlePageSizeChange}
           />
           <div className="list-product">

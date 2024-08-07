@@ -1,9 +1,15 @@
 import formatCurrency from "../../utils/formatCurrency";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineLabelImportant } from "react-icons/md";
 import { BsSuitHeartFill } from "react-icons/bs";
 
 const ProductList = (props) => {
   const { products } = props;
+  const navigate = useNavigate();
+
+  const handleProductDetails = (id) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <div className="product-cards">
@@ -17,7 +23,7 @@ const ProductList = (props) => {
                 </div>
                 <div className="card-action">
                   <ul className="card-list">
-                    <li className="list-item">
+                    <li className="list-item" onClick={() => handleProductDetails(product.id)}>
                       Xem chi tiết
                       <span style={{ fontSize: "1.125rem" }}>
                         <MdOutlineLabelImportant />
