@@ -1,4 +1,5 @@
-import { Tabs, TabList, Tab, TabIndicator } from "@chakra-ui/react";
+import { Tabs, TabList, Tab, TabIndicator, Select, Box, Text, Icon } from "@chakra-ui/react";
+
 import { GoTriangleDown } from "react-icons/go";
 
 const ProductBanner = (props) => {
@@ -14,12 +15,12 @@ const ProductBanner = (props) => {
   };
 
   return (
-    <div className="controls-container">
+    <Box width="100%" display="flex" justifyContent="space-between" alignItems="center">
       {/* =========================================================
                             Left Part Start here
         ======================================================== */}
 
-      <div>
+      <Box>
         <Tabs
           index={currentSort === "asc" ? 0 : 1}
           onChange={(index) => handleSortChange(index)}
@@ -32,7 +33,7 @@ const ProductBanner = (props) => {
           </TabList>
           <TabIndicator mt="-1.5px" height="2px" bg="black" borderRadius="1px" />
         </Tabs>
-      </div>
+      </Box>
       {/* =========================================================
                             Left Part End here
         ======================================================== */}
@@ -40,25 +41,25 @@ const ProductBanner = (props) => {
                             Right Part STart here
         ======================================================== */}
 
-      <div className="pagination-select-container">
-        <label className="pagination-label">Show:</label>
-        <select
-          className="pagination-select"
+      <Box display="flex" alignItems="center" gap={3}>
+        <Text>Show:</Text>
+        <Select
           onChange={(e) => handlePageSizeChange(+e.target.value)}
+          variant="outline"
+          width="auto"
+          focusBorderColor="black"
+          icon={<Icon as={GoTriangleDown} />}
         >
           <option value="12">12</option>
           <option value="24">24</option>
           <option value="36">36</option>
           <option value="48">48</option>
-        </select>
-        <span className="pagination-dropdown-icon">
-          <GoTriangleDown />
-        </span>
-      </div>
+        </Select>
+      </Box>
       {/* =========================================================
                             Right Part End here
         ======================================================== */}
-    </div>
+    </Box>
   );
 };
 
