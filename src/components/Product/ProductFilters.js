@@ -1,5 +1,6 @@
 import React from "react";
 import FilterByCategory from "./Filters/FilterByCategory";
+import FilterByPrice from "./Filters/FilterByPrice";
 
 const ProductFilters = (props) => {
   const { filters, onChange } = props;
@@ -14,9 +15,14 @@ const ProductFilters = (props) => {
     onChange(newFilters);
   };
 
+  const handlePriceChange = (values) => {
+    if (onChange) onChange(values);
+  };
+
   return (
     <div className="filter-container">
       <FilterByCategory onChange={handleFilterChange} />
+      <FilterByPrice onChange={handlePriceChange} />
     </div>
   );
 };
