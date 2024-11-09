@@ -1,104 +1,75 @@
 import { useEffect, useState } from "react";
-import ProductItems from "./ProductItems";
-import React from "react";
-import { Link } from "react-router-dom";
-import { getAllCategories, getAllProducts } from "../../services/apiService";
+import queryString from "query-string";
+import { getAllProducts } from "../../services/apiService";
+import Pagination from "./Pagination";
+import ProductFilters from "./ProductFilters";
+import "./Product.scss";
+import ProductList from "./ProductList";
+import ProductBanner from "./ProductBanner";
 
 function Product() {
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [currentCategory, setCurrentCategory] = useState("All"); // Khai báo state currentCategory để lưu category hiện tại
-  const productsPerPage = 12;
+  const [pagination, setPagination] = useState({
+    _page: 1,
+    _limit: 12,
+    _totalRows: 1,
+  });
+  const [filters, setFilters] = useState({
+    _limit: 12,
+    _page: 1,
+    _sort: "price",
+    _order: "asc",
+  });
 
   useEffect(() => {
-    fetchListProducts();
-    fetchListCategories();
-  }, []);
+    const fetchProductList = async () => {
+      const paramsString = queryString.stringify(filters);
+      const res = await getAllProducts(paramsString);
 
-  const fetchListProducts = async () => {
-    const res = await getAllProducts();
+      if (res && res.data.length > 0) {
+        setProducts(res.data);
+        setPagination(res.pagination);
+      }
+    };
+    fetchProductList();
+  }, [filters]);
 
-    if (res && res.data.length > 0) {
-      setProducts(res.data);
-    }
+  const handlePageChange = (newPage) => {
+    setFilters((prevFilters) => ({ ...prevFilters, _page: newPage }));
   };
 
-  const fetchListCategories = async () => {
-    const res = await getAllCategories();
-
-    if (res && res.data.length > 0) {
-      setCategories(res.data);
-    }
+  const handleSortChange = (newSortValue) => {
+    setFilters((prevFilters) => ({ ...prevFilters, _order: newSortValue }));
   };
 
-  //xử lý sự kiện thay đổi id phân loại
-  const handleCategoryChange = (categoryId) => {
-    setCurrentCategory(categoryId);
-    setCurrentPage(1); // Reset lại trang hiện tại khi thay đổi category
+  const handlePageSizeChange = (newSize) => {
+    setFilters((prevFilters) => ({ ...prevFilters, _limit: newSize }));
   };
-  //lọc sản phẩm theo phân loại
-  const filteredProducts =
-    currentCategory === "All"
-      ? products
-      : products.filter((product) => product.categoryId === currentCategory);
 
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-
-  let pageNumb;
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    pageNumb = pageNumber;
-    //thêm scroll to top
-    window.scrollTo(0, 0);
+  const handleFiltersChange = (newFilters) => {
+    setFilters((prevFilters) => ({ ...prevFilters, ...newFilters }));
   };
 
   return (
-    <div className="App">
-      <h1 className="text-center">Product</h1>
+    <div className="product-container mx-auto">
+      <h1 className="title">Products</h1>
       <hr />
-      <div className="mb-3">
-        <label htmlFor="categorySelect" className="form-label">
-          Filter by Category:
-        </label>
-        <select
-          id="categorySelect"
-          className="form-select"
-          onChange={(e) => handleCategoryChange(e.target.value)}
-        >
-          <option value="All">All</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
+      <div className="product-layout">
+        <div className="sidebar">
+          <ProductFilters onChange={handleFiltersChange} />
+        </div>
+        <div className="content">
+          <ProductBanner
+            currentSort={filters._order}
+            onSortChange={handleSortChange}
+            onPageSizeChange={handlePageSizeChange}
+          />
+          <div className="list-product">
+            <ProductList products={products} />
+            <Pagination pagination={pagination} onPageChange={handlePageChange} />
+          </div>
+        </div>
       </div>
-      <div className="product-grid">
-        {currentProducts.map((product) => (
-          <Link key={product.id} to={`/product/${product.id}`}>
-            <li key={product.id} className="product-item">
-              <img className="card-img-top" src={product.image_url} alt="Card" />
-              <h2 className="productName fw-lighter fs-7 ">{product.name}</h2>
-              <p className="productDes fw-bold fs-8">
-                {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(
-                  product.price
-                )}
-              </p>
-              <p>{categories.find((cat) => cat.id === product.categoryId)?.name || "Unknown"}</p>
-            </li>
-          </Link>
-        ))}
-      </div>
-      <ProductItems
-        productsPerPage={productsPerPage}
-        totalProducts={products.length}
-        paginate={paginate}
-        currentPage={currentPage}
-        num={pageNumb}
-      />
     </div>
   );
 }

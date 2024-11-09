@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { addCart } from "../../redux/action/cartAction";
+import formatCurrency from "../../utils/formatCurrency";
 
 const ProductInfor = ({ product }) => {
   const dispatch = useDispatch();
@@ -27,11 +28,7 @@ const ProductInfor = ({ product }) => {
           </div>
           <div className="product-description col-md-6 col-md-6 py-5">
             <h1 className="display-5">{product.name}</h1>
-            <h3 className="display-6  my-4">
-              {new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(
-                product.price
-              )}
-            </h3>
+            <h3 className="display-6  my-4">{formatCurrency(product.price)}</h3>
             <p className="lead">{product.description}</p>
             <button className="btn btn-outline-dark" onClick={() => handleAddToCart(product)}>
               Add to Cart

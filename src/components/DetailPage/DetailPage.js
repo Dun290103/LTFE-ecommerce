@@ -8,16 +8,16 @@ const DetailPage = () => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
+    const getProduct = async () => {
+      const res = await getDataProduct(id);
+
+      if (res && Object.keys(res).length > 0) {
+        setProduct(res);
+      }
+    };
+
     getProduct();
   }, [id]);
-
-  const getProduct = async () => {
-    const res = await getDataProduct(id);
-
-    if (res && res.data) {
-      setProduct(res.data);
-    }
-  };
 
   return (
     <div className="detail-page-title">

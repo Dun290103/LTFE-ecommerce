@@ -1,7 +1,7 @@
 import axios from "../utils/axiosCustomize";
 
-const getAllProducts = () => {
-  return axios.get("api/products");
+const getAllProducts = (paramsString) => {
+  return axios.get(`api/products?${paramsString}`);
 };
 
 const getDataProduct = (id) => {
